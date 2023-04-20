@@ -33,14 +33,10 @@ class _data_screenState extends State<data_screen> {
             title: Text("Products Details"),
             backgroundColor: Colors.black,
           ),
-          body: FutureBuilder(
-            future: ht!.getApiCall(),
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return Text("${snapshot.error}");
-              } else if (snapshot.hasData) {
-                List<dynamic>? getList = snapshot.data;
-                return ListView.builder(
+          body: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
                     itemBuilder: (context, index) {
                       return Container(
                         height: 200,
@@ -65,7 +61,7 @@ class _data_screenState extends State<data_screen> {
                                       decoration: BoxDecoration(
                                           color: Colors.blueGrey,
                                           border:
-                                              Border.all(color: Colors.black),
+                                          Border.all(color: Colors.black),
                                           shape: BoxShape.circle),
                                       child: Center(
                                           child: Text(
@@ -158,10 +154,9 @@ class _data_screenState extends State<data_screen> {
                         ),
                       );
                     },
-                    itemCount: getList!.length);
-              }
-              return CircularProgressIndicator();
-            },
+                    itemCount: hf!.getList.length),
+              ),
+            ],
           )
       ),
     );

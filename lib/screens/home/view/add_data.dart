@@ -127,8 +127,10 @@ class _home_screenState extends State<home_screen> {
                     // );
 
                     String msg = await hf!.createData(name, rate, price, offer, desc, cate);
-                    hf!.getApiCall();
-                    print(msg);
+                    // hf!.getApiCall();
+                    // print(msg);
+
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$msg")));
                     Navigator.pushNamed(context, 'data');
                   },
                   child: Container(
